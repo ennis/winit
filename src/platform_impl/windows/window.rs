@@ -657,8 +657,9 @@ unsafe fn init<T: 'static>(
     window_flags.set(WindowFlags::TRANSPARENT, attributes.transparent);
     // WindowFlags::VISIBLE and MAXIMIZED are set down below after the window has been configured.
     window_flags.set(WindowFlags::RESIZABLE, attributes.resizable);
-    window_flags.set(WindowFlags::CHILD, pl_attribs.parent.is_some());
-    window_flags.set(WindowFlags::ON_TASKBAR, true);
+    //window_flags.set(WindowFlags::CHILD, pl_attribs.parent.is_some());
+    window_flags.set(WindowFlags::ON_TASKBAR, !attributes.popup);
+    window_flags.set(WindowFlags::POPUP, attributes.popup);
 
     // creating the real window this time, by using the functions in `extra_functions`
     let real_window = {

@@ -161,6 +161,8 @@ pub struct WindowAttributes {
     ///
     /// The default is `None`.
     pub window_icon: Option<Icon>,
+
+    pub popup: bool,
 }
 
 impl Default for WindowAttributes {
@@ -179,6 +181,7 @@ impl Default for WindowAttributes {
             decorations: true,
             always_on_top: false,
             window_icon: None,
+            popup: false,
         }
     }
 }
@@ -315,6 +318,13 @@ impl WindowBuilder {
     #[inline]
     pub fn with_window_icon(mut self, window_icon: Option<Icon>) -> Self {
         self.window.window_icon = window_icon;
+        self
+    }
+
+    /// TODO
+    #[inline]
+    pub fn with_popup(mut self, popup: bool) -> Self {
+        self.window.popup = popup;
         self
     }
 

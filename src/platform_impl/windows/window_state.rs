@@ -83,6 +83,7 @@ bitflags! {
         const MARKER_IN_SIZE_MOVE = 1 << 11;
 
         const MINIMIZED = 1 << 12;
+        const POPUP = 1 << 13;
 
         const FULLSCREEN_AND_MASK = !(
             WindowFlags::DECORATIONS.bits |
@@ -224,6 +225,9 @@ impl WindowFlags {
         }
         if self.contains(WindowFlags::MAXIMIZED) {
             style |= WS_MAXIMIZE;
+        }
+        if self.contains(WindowFlags::POPUP) {
+            style |= WS_POPUP;
         }
 
         style |= WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_SYSMENU;
